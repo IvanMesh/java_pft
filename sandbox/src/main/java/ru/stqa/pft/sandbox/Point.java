@@ -24,8 +24,8 @@ public class Point {
 
   public static void main(String[] args) {
 
-    Point p1 = new Point(5, 2);
-    Point p2 = new Point(7, 5);
+    Point p1 = new Point(4, 2);
+    Point p2 = new Point(7, 4);
     System.out.println("Дистанция между точками р1 и р2 равна " + p1.distance(p2));
 
   }
