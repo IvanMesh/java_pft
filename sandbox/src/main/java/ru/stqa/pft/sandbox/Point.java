@@ -15,18 +15,18 @@ public class Point {
   }
 
 
-  public static double distance(Point p1, Point p2) {
+  public double distance(Point p2) {
 
-    double qx = p1.x - p2.x;
-    double qy = p1.y - p2.y;
+    double qx = this.x - p2.x;
+    double qy = this.y - p2.y;
     return Math.sqrt(qx * qx + qy * qy);
   }
 
   public static void main(String[] args) {
 
-    Point p1 = new Point(8, 2);
-    Point p2 = new Point(7, 4);
-    System.out.println("Дистанция между точками р1 и р2 равна " + Point.distance(p1, p2));
+    Point p1 = new Point(5, 2);
+    Point p2 = new Point(7, 5);
+    System.out.println("Дистанция между точками р1 и р2 равна " + p1.distance(p2));
 
   }
 }

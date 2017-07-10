@@ -14,9 +14,9 @@ public class MyFirstProgram {
       System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
 /*Домашка, второе задание*/
-      Point p1 = new Point(8, 2);
-      Point p2 = new Point(7, 4);
-      System.out.println("Дистанция между точками р1 и р2 равна " + Point.distance(p1, p2));
+      Point p1 = new Point(5, 2);
+      Point p2 = new Point(7, 5);
+      System.out.println("Дистанция между точками р1 и р2 равна " + p1.distance(p2));
     }
 /*Конец второго домашнего задания*/
 
