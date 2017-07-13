@@ -15,7 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class ContactGreationTests {
+public class ContactCreationTests {
     FirefoxDriver wd;
     
     @BeforeMethod
@@ -25,7 +25,7 @@ public class ContactGreationTests {
     }
     
     @Test
-    public void ContactGreationTests() {
+    public void ContactCreationTests() {
         wd.get("http://localhost:8080/addressbook/");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
@@ -46,25 +46,22 @@ public class ContactGreationTests {
         wd.findElement(By.name("lastname")).sendKeys("Мещеряков");
         wd.findElement(By.name("nickname")).click();
         wd.findElement(By.name("nickname")).clear();
-        wd.findElement(By.name("nickname")).sendKeys("Slick");
-        wd.findElement(By.name("nickname")).click();
-        wd.findElement(By.name("nickname")).clear();
         wd.findElement(By.name("nickname")).sendKeys("Slickan");
         wd.findElement(By.name("title")).click();
         wd.findElement(By.name("title")).sendKeys("\\9");
         wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys("Crazy Panda");
+        wd.findElement(By.name("company")).sendKeys("\\9");
         wd.findElement(By.name("address")).click();
         wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys("Россия, Московская Область, пос. Развилка 45-361");
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys("+");
+        wd.findElement(By.name("address")).sendKeys("МО, Ленинский р-н, пос. Развилка");
+        wd.findElement(By.name("home")).click();
+        wd.findElement(By.name("home")).sendKeys("\\9");
         wd.findElement(By.name("mobile")).click();
         wd.findElement(By.name("mobile")).clear();
         wd.findElement(By.name("mobile")).sendKeys("+7(999)813-80-83");
-        wd.findElement(By.name("theform")).click();
+        wd.findElement(By.name("email")).click();
+        wd.findElement(By.name("email")).clear();
+        wd.findElement(By.name("email")).sendKeys("imeshcheriyakov@gmail.com");
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
         wd.findElement(By.linkText("home")).click();
     }
