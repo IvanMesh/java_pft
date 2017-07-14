@@ -7,43 +7,38 @@ import ru.stqa.pft.addressbook.model.ContactData;
 /**
  * Created by i.mescheryakov on 14.07.2017.
  */
-public class ContactHelper {
-  private FirefoxDriver wd;
+public class ContactHelper extends HelperBase{
 
   public ContactHelper(FirefoxDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
 
   public void submitNewContactCreation() {
-      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+      click(By.xpath("//div[@id='content']/form/input[21]"));
+  }
+
+  protected void click(By locator) {
+    wd.findElement(locator).click();
   }
 
   public void fillNewContactForm(ContactData contactDate) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactDate.getИмя());
-      wd.findElement(By.name("middlename")).click();
-      wd.findElement(By.name("middlename")).clear();
-      wd.findElement(By.name("middlename")).sendKeys(contactDate.getОтчество());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(contactDate.getФамилия());
-      wd.findElement(By.name("nickname")).click();
-      wd.findElement(By.name("nickname")).clear();
-      wd.findElement(By.name("nickname")).sendKeys(contactDate.getНик());
-      wd.findElement(By.name("address")).click();
-      wd.findElement(By.name("address")).clear();
-      wd.findElement(By.name("address")).sendKeys(contactDate.getАдрес());
-      wd.findElement(By.name("mobile")).click();
-      wd.findElement(By.name("mobile")).clear();
-      wd.findElement(By.name("mobile")).sendKeys(contactDate.getТелефон());
-      wd.findElement(By.name("email")).click();
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys(contactDate.getПочта());
+    firstname(By.name("firstname"), contactDate.getИмя());
+    firstname(By.name("middlename"), contactDate.getОтчество());
+    firstname(By.name("lastname"), contactDate.getФамилия());
+    firstname(By.name("nickname"), contactDate.getНик());
+    firstname(By.name("address"), contactDate.getАдрес());
+    firstname(By.name("mobile"), contactDate.getТелефон());
+    firstname(By.name("email"), contactDate.getПочта());
+  }
+
+  private void firstname(By locator, String text) {
+    click(locator);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 
   public void gotoAddNewPage() {
-      wd.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 }
