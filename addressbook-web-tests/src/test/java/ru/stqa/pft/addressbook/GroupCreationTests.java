@@ -10,12 +10,12 @@ public class GroupCreationTests extends TestBase {
   @Test
   public void testGroupCreation() {
 
-    wd.findElement(By.id("footer")).click();
-    gotoGroupPage();
-    initGroupCreation();
-    fillGroupForm(new GroupData("test1", "test2", "test3"));
-    submitGroupCreation();
-    returnToGroupPage();
+    app.wd.findElement(By.id("footer")).click();
+    app.gotoGroupPage();
+    app.initGroupCreation();
+    app.fillGroupForm(new GroupData("test1", "test2", "test3"));
+    app.submitGroupCreation();
+    app.returnToGroupPage();
   }
 
 }
