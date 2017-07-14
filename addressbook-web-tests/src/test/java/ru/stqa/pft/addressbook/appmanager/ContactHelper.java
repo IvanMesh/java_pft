@@ -18,27 +18,17 @@ public class ContactHelper extends HelperBase{
       click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  protected void click(By locator) {
-    wd.findElement(locator).click();
-  }
-
   public void fillNewContactForm(ContactData contactDate) {
-    firstname(By.name("firstname"), contactDate.getИмя());
-    firstname(By.name("middlename"), contactDate.getОтчество());
-    firstname(By.name("lastname"), contactDate.getФамилия());
-    firstname(By.name("nickname"), contactDate.getНик());
-    firstname(By.name("address"), contactDate.getАдрес());
-    firstname(By.name("mobile"), contactDate.getТелефон());
-    firstname(By.name("email"), contactDate.getПочта());
+    type(By.name("firstname"), contactDate.getИмя());
+    type(By.name("middlename"), contactDate.getОтчество());
+    type(By.name("lastname"), contactDate.getФамилия());
+    type(By.name("nickname"), contactDate.getНик());
+    type(By.name("address"), contactDate.getАдрес());
+    type(By.name("mobile"), contactDate.getТелефон());
+    type(By.name("email"), contactDate.getПочта());
   }
 
-  private void firstname(By locator, String text) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
-
-  public void gotoAddNewPage() {
+    public void gotoAddNewPage() {
     click(By.linkText("add new"));
   }
 }
