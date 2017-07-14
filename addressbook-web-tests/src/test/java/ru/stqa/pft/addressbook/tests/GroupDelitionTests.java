@@ -1,8 +1,8 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
 
-public class GroupDelitionTests extends TestBase{
+public class GroupDelitionTests extends TestBase {
 
 
     @Test
