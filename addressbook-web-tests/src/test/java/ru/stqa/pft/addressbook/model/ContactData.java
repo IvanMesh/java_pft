@@ -8,15 +8,17 @@ public class ContactData {
   private final String адрес;
   private final String телефон;
   private final String почта;
+  private String group;
 
-  public ContactData(String Имя, String Отчество, String Фамилия, String Ник, String Адрес, String Телефон, String Почта) {
-    имя = Имя;
-    отчество = Отчество;
-    фамилия = Фамилия;
-    ник = Ник;
-    адрес = Адрес;
-    телефон = Телефон;
-    почта = Почта;
+  public ContactData(String Имя, String Отчество, String Фамилия, String Ник, String Адрес, String Телефон, String Почта,String group) {
+    this.имя = Имя;
+    this.отчество = Отчество;
+    this.фамилия = Фамилия;
+    this.ник = Ник;
+    this.адрес = Адрес;
+    this.телефон = Телефон;
+    this.почта = Почта;
+    this.group = group;
   }
 
   public String getИмя() {
@@ -45,5 +47,9 @@ public class ContactData {
 
   public String getПочта() {
     return почта;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }
