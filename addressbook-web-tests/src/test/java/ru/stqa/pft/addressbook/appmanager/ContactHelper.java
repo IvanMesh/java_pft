@@ -18,14 +18,14 @@ public class ContactHelper extends HelperBase{
       click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillNewContactForm(ContactData contactDate) {
-    type(By.name("firstname"), contactDate.getИмя());
-    type(By.name("middlename"), contactDate.getОтчество());
-    type(By.name("lastname"), contactDate.getФамилия());
-    type(By.name("nickname"), contactDate.getНик());
-    type(By.name("address"), contactDate.getАдрес());
-    type(By.name("mobile"), contactDate.getТелефон());
-    type(By.name("email"), contactDate.getПочта());
+  public void fillNewContactForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getИмя());
+    type(By.name("middlename"), contactData.getОтчество());
+    type(By.name("lastname"), contactData.getФамилия());
+    type(By.name("nickname"), contactData.getНик());
+    type(By.name("address"), contactData.getАдрес());
+    type(By.name("mobile"), contactData.getТелефон());
+    type(By.name("email"), contactData.getПочта());
   }
 
     public void gotoAddNewPage() {
