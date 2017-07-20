@@ -37,9 +37,6 @@ public class ContactHelper extends HelperBase{
     }
   }
 
-  public void gotoAddNewPage() {
-    click(By.linkText("add new"));
-  }
 
   public void initContactDeletion() {
     click(By.xpath("//div/div[4]/form[2]/div[2]/input"));
