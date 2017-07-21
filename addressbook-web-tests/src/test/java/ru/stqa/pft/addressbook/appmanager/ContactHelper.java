@@ -54,4 +54,18 @@ public class ContactHelper extends HelperBase{
   public void submitContactModification() {
     click(By.name("update"));
   }
+
+
+
+  public boolean isThereAContact() {
+
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createContact(ContactData contact, boolean b) {
+    wd.findElement(By.xpath("//div[@id='nav']//a[.='add new']")).click();
+    fillNewContactForm(new ContactData("Иван", "Юрьевич", "Мещеряков", "Slickan", "МО, Ленинский р-н, пос. Развилка", "+7(999)813-80-83", "imeshcheriyakov@gmail.com", "test1"), true);
+    submitNewContactCreation();
+    wd.findElement(By.xpath("//div[@id='nav']//a[.='home']")).click();
+  }
 }

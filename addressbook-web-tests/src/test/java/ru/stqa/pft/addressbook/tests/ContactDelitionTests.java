@@ -13,6 +13,9 @@ public class ContactDelitionTests extends TestBase {
   public void testContactDelition() {
 
     app.getNavigationHelper().gotoHomePage();
+    if (! app.getContactHelper().isThereAContact()) {
+
+      }
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactDeletion();
 
