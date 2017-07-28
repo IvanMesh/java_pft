@@ -50,6 +50,7 @@ public class GroupHelper extends HelperBase{
   }
 
   public void createGroup(GroupData group) {
+
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
@@ -60,3 +61,4 @@ public class GroupHelper extends HelperBase{
     return isElementPresent(By.name("selected[]"));
   }
 }
+
