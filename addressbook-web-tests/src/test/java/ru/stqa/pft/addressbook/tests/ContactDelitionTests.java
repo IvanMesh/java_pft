@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
 
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -19,7 +18,7 @@ public class ContactDelitionTests extends TestBase {
     app.getNavigationHelper().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Иван",  "Мещеряков",  "МО, Ленинский р-н, пос. Развилка", "+7(999)813-80-83", "imeshcheriyakov@gmail.com", "test1"), true);
+      app.getContactHelper().createContact(new ContactData( "Иван",  "Мещеряков",  "МО, Ленинский р-н, пос. Развилка", "+7(999)813-80-83", "imeshcheriyakov@gmail.com", "test1"), true);
       }
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactDeletion();
