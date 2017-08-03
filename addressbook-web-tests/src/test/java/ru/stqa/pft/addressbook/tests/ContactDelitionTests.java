@@ -12,17 +12,17 @@ import java.util.List;
  */
 public class ContactDelitionTests extends TestBase {
   
-  @Test
+  @Test (enabled = false)
   public void testContactDelition() {
 
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData( "Иван",  "Мещеряков",  "МО, Ленинский р-н, пос. Развилка", "+7(999)813-80-83", "imeshcheriyakov@gmail.com", "test1"), true);
       }
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactDeletion();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() -1);
 
