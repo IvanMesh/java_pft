@@ -51,7 +51,7 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper group() {
+  public GroupHelper getGroupHelper() {
     return groupHelper;
   }
 
@@ -59,7 +59,7 @@ public class ApplicationManager {
     return contactHelper;
   }
 
-  public NavigationHelper goTo() {
+  public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
 }
