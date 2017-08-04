@@ -64,18 +64,34 @@ public class ContactHelper extends HelperBase{
   }
 
 
-  public void createContact(ContactData contact, boolean creation) {
-    wd.findElement(By.xpath("//div[@id='nav']//a[.='add new']")).click();
+
+  public void create(ContactData contact) {
+    gotoAddNewPage();
     fillNewContactForm(contact, true);
     submitNewContactCreation();
-    wd.findElement(By.xpath("//div[@id='nav']//a[.='home']")).click();
+    homePage();
+  }
+
+
+  public void modify(int index, ContactData contact) {
+    initContactModification(index);
+    fillNewContactForm(contact, false);
+    submitContactModification();
+    gotoHomePage();
+  }
+
+
+  public void delete(int index) {
+    selectContact(index);
+    initContactDeletion();
+    homePage();
   }
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -90,5 +106,28 @@ public class ContactHelper extends HelperBase{
       contacts.add(contact);
     }
     return contacts;
+  }
+
+  private void gotoHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
+  private void homePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+  private void gotoAddNewPage() {
+    if (isElementPresent(By.tagName("h1")) &&
+            wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry") &&
+            isElementPresent(By.tagName("label")) &&
+            wd.findElement(By.tagName("label")).getText().equals("Group")) {
+      return;
+    }
+    click(By.linkText("add new"));
   }
 }

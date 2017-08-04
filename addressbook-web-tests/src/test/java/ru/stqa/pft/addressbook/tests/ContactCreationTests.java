@@ -10,26 +10,20 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
 
 
-    @Test (enabled = false)
-    public void testContactCreation() {
-        List<ContactData> before = app.getContactHelper().getContactList();
-        ContactData contact = create();
-        List<ContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size() + 1);
+  @Test(enabled = true)
+  public void testContactCreation() {
 
-        before.add(contact);
-        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
-    }
+    app.goTo().homePage();
+    List<ContactData> before = app.contact().list();
+    ContactData contact = new ContactData("Иван", "Мещеря1ков", "МО, Ленинский р-н, пос. Развилка", "79998138083", "imeshcheriyakov@gmail.com", "test1");
+    app.contact().create(contact);
+    List<ContactData> after = app.contact().list();
+    Assert.assertEquals(after.size(), before.size() + 1);
 
-    private ContactData create() {
-        app.goTo().gotoAddNewPage();
-        ContactData contact = new ContactData("Иван",  "Мещеря1ков",  "МО, Ленинский р-н, пос. Развилка", "79998138083", "imeshcheriyakov@gmail.com", "1");
-        app.getContactHelper().fillNewContactForm(contact, true);
-        app.getContactHelper().submitNewContactCreation();
-        app.goTo().gotoHomePage();
-        return contact;
-    }
+    before.add(contact);
+    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+  }
 }
