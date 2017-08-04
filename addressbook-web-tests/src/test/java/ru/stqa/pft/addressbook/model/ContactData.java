@@ -2,24 +2,19 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
   private int id;
-  private final String имя;
-  private final String фамилия;
-  private final String адрес;
-  private final String телефон;
-  private final String почта;
+  private String имя;
+  private String фамилия;
+  private String адрес;
+  private String телефон;
+  private String почта;
   private String group;
-
-
-  public void setId(int id) {
-
-    this.id = id;
-  }
 
   public ContactData(String Имя, String Фамилия, String Адрес, String Телефон, String Почта, String group) {
     this.id = Integer.MAX_VALUE;
     this.имя = Имя;
     this.фамилия = Фамилия;
     this.адрес = Адрес;
+
     this.телефон = Телефон;
     this.почта = Почта;
     this.group = group;
@@ -36,31 +31,40 @@ public class ContactData {
     this.group = group;
   }
 
-  public int getId() {
+  public int withId() {
     return id;
   }
 
-  public String getИмя() {
+  public String withName() {
     return имя;
   }
 
-  public String getФамилия() {
+  public String withLastName() {
     return фамилия;
   }
 
-  public String getАдрес() {
+  public String withAddress() {
     return адрес;
   }
 
-  public String getТелефон() {
+  public String withPhone() {
     return телефон;
   }
 
-  public String getПочта() {
+  public String withMail() {
     return почта;
   }
 
-  public String getGroup() { return group; }
+  public String withGroup() { return group; }
+
+  public void withId(int id) {
+
+    this.id = id;
+  }
+
+  public void setИмя(String имя) {
+    this.имя = имя;
+  }
 
   @Override
   public String toString() {
