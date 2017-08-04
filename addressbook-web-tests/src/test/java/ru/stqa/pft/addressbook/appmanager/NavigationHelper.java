@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by i.mescheryakov on 14.07.2017.
@@ -28,7 +27,7 @@ public class NavigationHelper extends HelperBase{
     }
       click(By.linkText("home"));
   }
-  public void gotoAddNewPage() {
+  public void addNewPage() {
     if (isElementPresent(By.tagName("h1")) &&
             wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry") &&
             isElementPresent(By.tagName("label")) &&
