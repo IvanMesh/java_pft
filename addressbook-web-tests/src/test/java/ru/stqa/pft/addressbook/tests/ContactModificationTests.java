@@ -28,12 +28,12 @@ public class ContactModificationTests extends TestBase {
     Set<ContactData> before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     int index = before.size() - 1;
-    ContactData contact = new ContactData().withId(before.get(index).getId()).withName("Иван").withLastname("Мещеряков");
+    ContactData contact = new ContactData().withId(modifiedContact.getId()).withName("Иван").withLastname("Мещеряков");
     app.contact().modify(index, contact);
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
     Assert.assertEquals(after, before);
   }
