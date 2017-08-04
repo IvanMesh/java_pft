@@ -27,9 +27,6 @@ public class ContactHelper extends HelperBase{
   public void fillNewContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getИмя());
     type(By.name("lastname"), contactData.getФамилия());
-    type(By.name("address"), contactData.getАдрес());
-    type(By.name("mobile"), contactData.getТелефон());
-    type(By.name("email"), contactData.getПочта());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -98,11 +95,8 @@ public class ContactHelper extends HelperBase{
 
       String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-      String address = element.findElement(By.xpath(".//td[4]")).getText();
-      String mail = element.findElement(By.xpath(".//td[5]")).getText();
-      String mobile = element.findElement(By.xpath(".//td[6]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, lastname, address, mobile, mail,  null);
+      ContactData contact = new ContactData(id, firstname, lastname, null);
       contacts.add(contact);
     }
     return contacts;

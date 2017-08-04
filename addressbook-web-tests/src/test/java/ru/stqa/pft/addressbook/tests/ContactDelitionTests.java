@@ -18,7 +18,7 @@ public class ContactDelitionTests extends TestBase {
     app.goTo().homePage();
     if (app.contact().list().size() == 0) {
       app.contact().create(new ContactData
-              ( "Иван",  "Мещеряков",  "МО, Ленинский р-н, пос. Развилка", "79998138083", "imeshcheriyakov@gmail.com", "test1"));
+              ( "Иван",  "Мещеряков", "test1"));
     }
   }
   
