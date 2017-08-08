@@ -9,6 +9,17 @@ public class ContactData {
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  private String allMails;
+
+  public String getAllMails() {
+    return allMails;
+  }
+
+  public ContactData withAllMails(String allMails) {
+    this.allMails = allMails;
+    return this;
+  }
+
 
   public String getAllPhones() {
     return allPhones;
@@ -91,19 +102,13 @@ public class ContactData {
     ContactData that = (ContactData) o;
 
     if (имя != null ? !имя.equals(that.имя) : that.имя != null) return false;
-    if (фамилия != null ? !фамилия.equals(that.фамилия) : that.фамилия != null) return false;
-    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
-    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
-    return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
+    return фамилия != null ? фамилия.equals(that.фамилия) : that.фамилия == null;
   }
 
   @Override
   public int hashCode() {
     int result = имя != null ? имя.hashCode() : 0;
     result = 31 * result + (фамилия != null ? фамилия.hashCode() : 0);
-    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
-    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
-    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
     return result;
   }
 

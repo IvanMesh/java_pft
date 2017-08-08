@@ -137,7 +137,10 @@ public class ContactHelper extends HelperBase{
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String mail = wd.findElement(By.name("email1")).getAttribute("value");
+    String mail2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String mail3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withName(name).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+    return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withMail(mail).withMail2(mail2).withMail3(mail3);;
   }
 }
