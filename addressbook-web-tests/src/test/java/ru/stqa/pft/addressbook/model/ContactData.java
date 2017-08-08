@@ -1,13 +1,37 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id =Integer.MAX_VALUE;
+  private int id = Integer.MAX_VALUE;
   private String имя;
   private String фамилия;
   private String group;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+  private String allPhones;
 
-  public int getId() {
-    return id;
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
   }
 
   public ContactData withName(String имя) {
@@ -31,6 +55,22 @@ public class ContactData {
     return this;
   }
 
+  public int getId() {
+    return id;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
   public String getИмя() {
     return имя;
   }
@@ -39,7 +79,9 @@ public class ContactData {
     return фамилия;
   }
 
-  public String getGroup() { return group; }
+  public String getGroup() {
+    return group;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -48,16 +90,20 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != that.id) return false;
     if (имя != null ? !имя.equals(that.имя) : that.имя != null) return false;
-    return фамилия != null ? фамилия.equals(that.фамилия) : that.фамилия == null;
+    if (фамилия != null ? !фамилия.equals(that.фамилия) : that.фамилия != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+    return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
   }
 
   @Override
   public int hashCode() {
-    int result = id;
-    result = 31 * result + (имя != null ? имя.hashCode() : 0);
+    int result = имя != null ? имя.hashCode() : 0;
     result = 31 * result + (фамилия != null ? фамилия.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
     return result;
   }
 

@@ -7,10 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by i.mescheryakov on 14.07.2017.
@@ -67,6 +64,7 @@ public class ContactHelper extends HelperBase{
     gotoAddNewPage();
     fillNewContactForm(contact, true);
     submitNewContactCreation();
+    contactCache = null;
     homePage();
   }
 
@@ -75,12 +73,14 @@ public class ContactHelper extends HelperBase{
     initContactModificationById(contact.getId());
     fillNewContactForm(contact, false);
     submitContactModification();
+    contactCache = null;
     gotoHomePage();
   }
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
     initContactDeletion();
+    contactCache = null;
     homePage();
   }
 
@@ -111,16 +111,33 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("add new"));
   }
 
+  private Contacts contactCache = null;
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
 
       String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withName(firstname).withLastname(lastname));
+      contactCache.add(new ContactData().withId(id).withName(firstname).withLastname(lastname).withAllPhones(allPhones));
     }
-    return contacts;
+    return new Contacts(contactCache);
+  }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String name = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withName(name).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
   }
 }
