@@ -9,7 +9,37 @@ public class ContactData {
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  private String mail;
+  private String mail2;
+  private String mail3;
   private String allMails;
+
+  public String getMail() {
+    return mail;
+  }
+
+  public ContactData withMail(String mail) {
+    this.mail = mail;
+    return this;
+  }
+
+  public String getMail2() {
+    return mail2;
+  }
+
+  public ContactData withMail2(String mail2) {
+    this.mail2 = mail2;
+    return this;
+  }
+
+  public String getMail3() {
+    return mail3;
+  }
+
+  public ContactData withMail3(String mail3) {
+    this.mail3 = mail3;
+    return this;
+  }
 
   public String getAllMails() {
     return allMails;

@@ -84,7 +84,7 @@ public class ContactHelper extends HelperBase{
     homePage();
   }
 
-  public int getContactCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
@@ -124,8 +124,9 @@ public class ContactHelper extends HelperBase{
       String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
+      String allMails = element.findElement(By.xpath(".//td[5]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withName(firstname).withLastname(lastname).withAllPhones(allPhones));
+      contactCache.add(new ContactData().withId(id).withName(firstname).withLastname(lastname).withAllPhones(allPhones).withAllMails(allMails));
     }
     return new Contacts(contactCache);
   }
@@ -137,10 +138,10 @@ public class ContactHelper extends HelperBase{
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
-    String mail = wd.findElement(By.name("email1")).getAttribute("value");
+    String mail = wd.findElement(By.name("email")).getAttribute("value");
     String mail2 = wd.findElement(By.name("email2")).getAttribute("value");
     String mail3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withMail(mail).withMail2(mail2).withMail3(mail3);;
+    return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withMail(mail).withMail2(mail2).withMail3(mail3);
   }
 }
