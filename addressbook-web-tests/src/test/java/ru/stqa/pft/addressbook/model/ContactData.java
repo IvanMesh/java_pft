@@ -20,6 +20,26 @@ public class ContactData {
     return address;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (имя != null ? !имя.equals(that.имя) : that.имя != null) return false;
+    return фамилия != null ? фамилия.equals(that.фамилия) : that.фамилия == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (имя != null ? имя.hashCode() : 0);
+    result = 31 * result + (фамилия != null ? фамилия.hashCode() : 0);
+    return result;
+  }
+
   public ContactData withAddress(String address) {
     this.address = address;
     return this;
@@ -133,24 +153,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (имя != null ? !имя.equals(that.имя) : that.имя != null) return false;
-    return фамилия != null ? фамилия.equals(that.фамилия) : that.фамилия == null;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = имя != null ? имя.hashCode() : 0;
-    result = 31 * result + (фамилия != null ? фамилия.hashCode() : 0);
-    return result;
   }
 
   @Override
