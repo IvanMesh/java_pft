@@ -33,11 +33,8 @@ public class ContactMailTests extends TestBase{
   private String mergeMails(ContactData contact) {
     return Arrays.asList(contact.getMail(), contact.getMail2(), contact
             .getMail3()).stream().filter((s) -> ! s.equals(""))
-            .map(ContactMailTests::cleaned)
+
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned (String mail) {
-    return mail.replaceAll("\\s", "").replaceAll("[-()]", "");
-  }
 }
