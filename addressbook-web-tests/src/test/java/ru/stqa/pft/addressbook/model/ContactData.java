@@ -1,16 +1,21 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 
 public class ContactData {
   private int id = Integer.MAX_VALUE;
+  @Expose
   private String имя;
+  @Expose
   private String фамилия;
   private String group;
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  @Expose
   private String mail;
   private String mail2;
   private String mail3;
