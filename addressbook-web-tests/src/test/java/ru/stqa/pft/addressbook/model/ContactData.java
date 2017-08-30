@@ -10,16 +10,19 @@ public class ContactData {
   private String имя;
   @Expose
   private String фамилия;
+  @Expose
   private String group;
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
+  @Expose
   private String allPhones;
   @Expose
   private String mail;
   private String mail2;
   private String mail3;
   private String allMails;
+  @Expose
   private String address;
   private File photo;
 
@@ -174,13 +177,13 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "id=" + id +
-            ", имя='" + имя + '\'' +
-
+            "имя='" + имя + '\'' +
             ", фамилия='" + фамилия + '\'' +
             ", group='" + group + '\'' +
+            ", allPhones='" + allPhones + '\'' +
+            ", mail='" + mail + '\'' +
+            ", address='" + address + '\'' +
             '}';
-
   }
 
 }

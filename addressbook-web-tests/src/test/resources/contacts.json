@@ -2,16 +2,16 @@
   {
     "имя": "name 0",
     "фамилия": "lastname 0",
-    "mail": "mail 0"
+    "group": "test 0"
   },
   {
     "имя": "name 1",
     "фамилия": "lastname 1",
-    "mail": "mail 1"
+    "group": "test 1"
   },
   {
     "имя": "name 2",
     "фамилия": "lastname 2",
-    "mail": "mail 2"
+    "group": "test 2"
   }
 ]
