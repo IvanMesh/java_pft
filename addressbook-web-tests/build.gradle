@@ -17,9 +17,21 @@ task testGroups(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng-groups.xml'
     }
+    if (project.hasProperty("browser")) {
+        system.Property 'browser', "${browser}"
+    }
+    if (project.hasProperty("target")) {
+        system.Property 'target', "${target}"
+    }
 }
 task testContacts(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng-contacts.xml'
+    }
+    if (project.hasProperty("browser")) {
+        system.Property 'browser', "${browser}"
+    }
+    if (project.hasProperty("target")) {
+        system.Property 'target', "${target}"
     }
 }
