@@ -9,29 +9,34 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
     compile 'com.beust:jcommander:1.72'
-    compile 'com.thoughtworks.xstream:xstream:1.4.10'
+    compile 'com.thoughtworks.xstream:xstream:1.4.10-java7'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'mysql:mysql-connector-java:8.0.7-dmr'
+    compile 'org.hibernate:hibernate-core:5.2.10.Final'
 }
 
-task testGroups(type: Test) {
-    useTestNG() {
-        suites 'src/test/resources/testng-groups.xml'
+task testGroups (type: Test){
+    useTestNG(){
+        suites 'src/test/resurces/testng-groups.xml'
     }
-    if (project.hasProperty("browser")) {
-        system.Property 'browser', "${browser}"
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
     }
-    if (project.hasProperty("target")) {
-        system.Property 'target', "${target}"
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
     }
 }
-task testContacts(type: Test) {
-    useTestNG() {
-        suites 'src/test/resources/testng-contacts.xml'
+
+
+task testContacts (type: Test){
+    useTestNG(){
+        suites 'src/test/resurces/testng-contacts.xml'
     }
-    if (project.hasProperty("browser")) {
-        system.Property 'browser', "${browser}"
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
     }
-    if (project.hasProperty("target")) {
-        system.Property 'target', "${target}"
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
     }
 }
