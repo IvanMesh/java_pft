@@ -2,6 +2,10 @@
   {
     "имя": "name 0",
     "фамилия": "lastname 0",
-    "group": "test 0"
+    "group": "test 0",
+    "homePhone": "Home 0",
+    "mobilePhone": "Mobile 0",
+    "workPhone": "Work 0",
+    "address": "address 0"
   }
 ]

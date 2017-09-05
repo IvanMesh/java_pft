@@ -21,29 +21,20 @@ public class ContactData {
   @Expose
   @Transient
   private String group;
+  @Expose
   @Column(name = "home")
   @Type(type = "text")
   private String homePhone;
+  @Expose
   @Column(name = "mobile")
   @Type(type = "text")
   private String mobilePhone;
+  @Expose
   @Column(name = "work")
   @Type(type = "text")
   private String workPhone;
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", имя='" + имя + '\'' +
-            ", фамилия='" + фамилия + '\'' +
-            '}';
-  }
-
-  @Expose
   @Transient
   private String allPhones;
-  @Expose
   @Transient
   private String mail;
   @Transient
@@ -70,6 +61,15 @@ public class ContactData {
 
   public String getAddress() {
     return address;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", имя='" + имя + '\'' +
+            ", фамилия='" + фамилия + '\'' +
+            '}';
   }
 
   @Override
