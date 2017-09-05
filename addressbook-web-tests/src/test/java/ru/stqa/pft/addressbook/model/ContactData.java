@@ -1,39 +1,70 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.File;
 
 @Entity
+@Table (name = "addressbook")
 public class ContactData {
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String имя;
   @Expose
+  @Column(name = "lastname")
   private String фамилия;
   @Expose
+  @Transient
   private String group;
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone;
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", имя='" + имя + '\'' +
+            ", фамилия='" + фамилия + '\'' +
+            '}';
+  }
+
   @Expose
+  @Transient
   private String allPhones;
   @Expose
+  @Transient
   private String mail;
+  @Transient
   private String mail2;
+  @Transient
   private String mail3;
+  @Transient
   private String allMails;
   @Expose
+  @Type(type = "text")
   private String address;
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -174,18 +205,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "имя='" + имя + '\'' +
-            ", фамилия='" + фамилия + '\'' +
-            ", group='" + group + '\'' +
-            ", allPhones='" + allPhones + '\'' +
-            ", mail='" + mail + '\'' +
-            ", address='" + address + '\'' +
-            '}';
   }
 
 }
