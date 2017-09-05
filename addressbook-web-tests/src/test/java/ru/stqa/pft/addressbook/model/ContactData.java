@@ -81,7 +81,14 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (имя != null ? !имя.equals(that.имя) : that.имя != null) return false;
-    return фамилия != null ? фамилия.equals(that.фамилия) : that.фамилия == null;
+    if (фамилия != null ? !фамилия.equals(that.фамилия) : that.фамилия != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+    if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+    if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
+    if (mail2 != null ? !mail2.equals(that.mail2) : that.mail2 != null) return false;
+    if (mail3 != null ? !mail3.equals(that.mail3) : that.mail3 != null) return false;
+    return address != null ? address.equals(that.address) : that.address == null;
   }
 
   @Override
@@ -89,6 +96,13 @@ public class ContactData {
     int result = id;
     result = 31 * result + (имя != null ? имя.hashCode() : 0);
     result = 31 * result + (фамилия != null ? фамилия.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+    result = 31 * result + (mail != null ? mail.hashCode() : 0);
+    result = 31 * result + (mail2 != null ? mail2.hashCode() : 0);
+    result = 31 * result + (mail3 != null ? mail3.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
     return result;
   }
 
