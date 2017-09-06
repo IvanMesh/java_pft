@@ -33,8 +33,9 @@ public class ContactHelper extends HelperBase{
     type(By.name("address"), contactData.getAddress());
 
     if (creation) {
-      if (contactData.getGroup() != null) {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+     if (contactData.getGroups().size() > 0) {
+      Assert.assertTrue(contactData.getGroups().size() == 1);
+       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -109,7 +110,7 @@ public class ContactHelper extends HelperBase{
     }
     click(By.linkText("home"));
   }
-  private void gotoAddNewPage() {
+  public void gotoAddNewPage() {
     if (isElementPresent(By.tagName("h1")) &&
             wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry") &&
             isElementPresent(By.tagName("label")) &&
