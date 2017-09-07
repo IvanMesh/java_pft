@@ -168,4 +168,8 @@ public class ContactHelper extends HelperBase{
     wd.findElement(By.cssSelector("select[name='to_group']>option[value='" + id + "']")).click();
     click(By.cssSelector("input[name='add']"));
   }
+
+  public void removeContactFromGroup(int id) {
+    wd.findElement(By.cssSelector("select[name='group']>option[value='" + id + "']")).click();
+  }
 }
