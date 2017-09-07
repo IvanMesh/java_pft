@@ -156,4 +156,16 @@ public class ContactHelper extends HelperBase{
     return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname)
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withMail(mail).withMail2(mail2).withMail3(mail3).withAddress(address);
   }
+
+  private void selectGroup() {
+    click(By.name("to_group"));
+    //wd.findElement(By.cssSelector("option[value='" + value + "']")).click();
+    new Select(wd.findElement(By.name("to_group"))).selectByIndex(0);
+
+  }
+
+  public void contactToGroup(int id) {
+    wd.findElement(By.cssSelector("select[name='to_group']>option[value='" + id + "']")).click();
+    click(By.cssSelector("input[name='add']"));
+  }
 }
