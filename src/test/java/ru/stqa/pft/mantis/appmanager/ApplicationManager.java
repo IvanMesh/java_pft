@@ -18,11 +18,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
   private final Properties properties;
-  private WebDriver wd;
+  WebDriver wd;
 
 
   private String browser;
-  private RegistrationHelper registrationHelper;
 
 
   public ApplicationManager(String browser) {
@@ -33,13 +32,22 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+
+    if (browser.equals(BrowserType.FIREFOX)) {
+      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Tools/Firefox/firefox.exe"));
+    } else if (browser.equals(BrowserType.CHROME)) {
+      wd = new ChromeDriver();
+    } else if (browser.equals(BrowserType.IE)) {
+      wd = new InternetExplorerDriver();
+    }
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    wd.get(properties.getProperty("web.baseUrl"));
   }
 
 
   public void stop() {
-    if (wd != null) {
-      wd.quit();
-    }
+    wd.quit();
   }
 
   public HttpSession newSession() {
@@ -48,27 +56,5 @@ public class ApplicationManager {
 
   public String getProperty(String key) {
     return properties.getProperty(key);
-  }
-
-  public RegistrationHelper registration() {
-    if (registrationHelper == null) {
-      registrationHelper = new RegistrationHelper(this);
-    }
-    return registrationHelper;
-  }
-
-  public WebDriver getDriver() {
-    if (wd == null) {
-      if (browser.equals(BrowserType.FIREFOX)) {
-        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Tools/Firefox/firefox.exe"));
-      } else if (browser.equals(BrowserType.CHROME)) {
-        wd = new ChromeDriver();
-      } else if (browser.equals(BrowserType.IE)) {
-        wd = new InternetExplorerDriver();
-      }
-      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-      wd.get(properties.getProperty("web.baseUrl"));
-    }
-    return wd;
   }
 }
